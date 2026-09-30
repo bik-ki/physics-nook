@@ -144,7 +144,7 @@ function FormulasTab({ categories, formulas }: Data) {
   const catName = (id: string) => categories.find((c) => c.id === id)?.name ?? "—";
 
   function open(f?: Formula) {
-    setEdit(f ?? { category_id: categories[0]?.id, is_premium: false, sort_order: 0 });
+    setEdit(f ?? { category_id: categories[0]?.id ?? "", is_premium: false, sort_order: 0 });
     setVars((f?.variables ?? []).map((v) => `${v.symbol} = ${v.meaning}`).join("\n"));
   }
 
@@ -153,7 +153,7 @@ function FormulasTab({ categories, formulas }: Data) {
     if (!edit) return;
     const variables = vars.split("\n").map((l) => l.trim()).filter(Boolean).map((l) => {
       const [symbol, ...rest] = l.split("=");
-      return { symbol: symbol.trim(), meaning: rest.join("=").trim() };
+      return { symbol: (symbol ?? "").trim(), meaning: rest.join("=").trim() };
     });
     const row = {
       category_id: edit.category_id!, name: edit.name ?? "", equation: edit.equation ?? "",
@@ -223,7 +223,7 @@ function CategoriesTab({ subjects, categories }: Data) {
   }
 
   return (
-    <ListShell label="category" onAdd={() => setEdit({ subject_id: subjects[0]?.id, tint: "violet", sort_order: 0 })}>
+    <ListShell label="category" onAdd={() => setEdit({ subject_id: subjects[0]?.id ?? "", tint: "violet", sort_order: 0 })}>
       {categories.map((c) => (
         <Row key={c.id} title={c.name} sub={`${subName(c.subject_id)} · /c/${c.slug}`} onEdit={() => setEdit(c)}
           onDelete={() => confirm(`Delete "${c.name}"? Its formulas must be removed first.`) && save(supabase.from("categories").delete().eq("id", c.id), "Category deleted")} />

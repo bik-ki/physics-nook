@@ -26,6 +26,9 @@ export function SiteHeader() {
           >
             Formulas
           </Link>
+          <Link to="/admin" className="rounded-full px-3 py-2 hover:text-foreground" activeProps={{ className: "text-foreground" }}>
+            Admin
+          </Link>
         </nav>
       </div>
     </header>

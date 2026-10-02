@@ -71,6 +71,7 @@ export type Database = {
           is_premium: boolean
           name: string
           sort_order: number
+          topic: string
           updated_at: string
           variables: Json
         }
@@ -83,6 +84,7 @@ export type Database = {
           is_premium?: boolean
           name: string
           sort_order?: number
+          topic?: string
           updated_at?: string
           variables?: Json
         }
@@ -95,6 +97,7 @@ export type Database = {
           is_premium?: boolean
           name?: string
           sort_order?: number
+          topic?: string
           updated_at?: string
           variables?: Json
         }

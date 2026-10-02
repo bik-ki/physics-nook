@@ -1,4 +1,5 @@
 import type { Variable } from "@/lib/content-types";
+import { FormulaFigure } from "./FormulaFigure";
 
 type Props = {
   name: string;
@@ -6,9 +7,10 @@ type Props = {
   description: string;
   variables: Variable[];
   isPremium: boolean;
+  topic?: string;
 };
 
-export function FormulaCard({ name, equation, description, variables, isPremium }: Props) {
+export function FormulaCard({ name, equation, description, variables, isPremium, topic = "General" }: Props) {
   return (
     <article className="card-lift rounded-2xl border-2 border-border bg-card p-5">
       <div className="flex items-center justify-between gap-3">
@@ -26,9 +28,13 @@ export function FormulaCard({ name, equation, description, variables, isPremium 
         )}
       </div>
 
-      <p className={`eq mt-3 text-2xl font-medium ${isPremium ? "text-muted-foreground" : ""}`}>
-        {equation}
-      </p>
+      <div className="mt-3 flex min-h-24 items-center justify-between gap-3">
+        <p className={`eq min-w-0 flex-1 break-words text-xl font-medium sm:text-2xl ${isPremium ? "text-muted-foreground" : ""}`}>
+          {equation}
+        </p>
+        <div className="hidden shrink-0 rounded-md bg-secondary/60 p-1 sm:block"><FormulaFigure topic={topic} /></div>
+        <div className="shrink-0 rounded-md bg-secondary/60 p-1 sm:hidden"><FormulaFigure topic={topic} /></div>
+      </div>
       <p className={`mt-2 text-sm ${isPremium ? "text-muted-foreground" : "text-muted-foreground"}`}>
         {description}
       </p>

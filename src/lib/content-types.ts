@@ -26,6 +26,7 @@ export type Formula = {
   name: string;
   equation: string;
   description: string;
+  topic: string;
   variables: Variable[];
   is_premium: boolean;
   sort_order: number;

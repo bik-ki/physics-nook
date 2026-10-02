@@ -1,0 +1,1 @@
+ALTER TABLE public.formulas ADD COLUMN topic text NOT NULL DEFAULT 'General'; CREATE INDEX formulas_category_topic_idx ON public.formulas (category_id, topic);

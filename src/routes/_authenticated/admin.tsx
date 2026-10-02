@@ -157,7 +157,7 @@ function FormulasTab({ categories, formulas }: Data) {
     });
     const row = {
       category_id: edit.category_id!, name: edit.name ?? "", equation: edit.equation ?? "",
-      description: edit.description ?? "", variables, is_premium: !!edit.is_premium, sort_order: Number(edit.sort_order ?? 0),
+      description: edit.description ?? "", topic: edit.topic?.trim() || "General", variables, is_premium: !!edit.is_premium, sort_order: Number(edit.sort_order ?? 0),
     };
     const ok = await save(
       edit.id ? supabase.from("formulas").update(row).eq("id", edit.id) : supabase.from("formulas").insert(row),
@@ -184,6 +184,7 @@ function FormulasTab({ categories, formulas }: Data) {
                 </select>
               </Field>
               <Field label="Name"><Input required value={edit.name ?? ""} onChange={(e) => setEdit({ ...edit, name: e.target.value })} /></Field>
+              <Field label="Topic"><Input placeholder="e.g. Kinematics" value={edit.topic ?? ""} onChange={(e) => setEdit({ ...edit, topic: e.target.value })} /></Field>
               <Field label="Equation"><Input required className="font-mono" value={edit.equation ?? ""} onChange={(e) => setEdit({ ...edit, equation: e.target.value })} /></Field>
               <Field label="Explanation"><Textarea value={edit.description ?? ""} onChange={(e) => setEdit({ ...edit, description: e.target.value })} /></Field>
               <Field label="Variables (one per line, e.g. v = final velocity)">

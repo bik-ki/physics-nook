@@ -72,6 +72,7 @@ function SearchPage() {
                 description={formula.description}
                 variables={formula.variables}
                 isPremium={formula.is_premium}
+                topic={formula.topic}
               />
             </div>
           ))}

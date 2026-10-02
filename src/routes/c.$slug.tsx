@@ -98,8 +98,12 @@ function CategoryPage() {
           {results.length} of {formulas.length} formulas · {premiumCount} premium
         </p>
 
-        <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
-          {results.map((formula) => (
+        <div className="mt-4 space-y-8">
+          {Array.from(new Set(results.map((formula) => formula.topic || "General"))).map((topic) => (
+            <section key={topic} aria-label={topic}>
+              <h2 className="mb-3 border-b border-border pb-2 font-display text-xl font-semibold">{topic}</h2>
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              {results.filter((formula) => (formula.topic || "General") === topic).map((formula) => (
             <FormulaCard
               key={formula.id}
               name={formula.name}
@@ -107,7 +111,11 @@ function CategoryPage() {
               description={formula.description}
               variables={formula.variables}
               isPremium={formula.is_premium}
+              topic={formula.topic}
             />
+              ))}
+              </div>
+            </section>
           ))}
         </div>
 

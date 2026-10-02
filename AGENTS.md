@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Store formula topics as a text field within each physics category, and render a reusable conceptual SVG sketch for each topic; this keeps study content editable without managing hundreds of image files.

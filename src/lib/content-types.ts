@@ -59,11 +59,12 @@ export function parseVariables(value: unknown): Variable[] {
   });
 }
 
-export function matchesQuery(formula: { name: string; equation: string; variables: Variable[] }, query: string) {
+export function matchesQuery(formula: { name: string; equation: string; topic?: string; variables: Variable[] }, query: string) {
   const q = query.trim().toLowerCase();
   if (!q) return true;
   return (
     formula.name.toLowerCase().includes(q) ||
+    formula.topic?.toLowerCase().includes(q) ||
     formula.equation.toLowerCase().includes(q) ||
     formula.variables.some(
       (v) => v.symbol.toLowerCase().includes(q) || v.meaning.toLowerCase().includes(q),

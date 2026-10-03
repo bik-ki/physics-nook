@@ -19,6 +19,8 @@ export const Route = createFileRoute("/search")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   loader: async ({ context }) => {

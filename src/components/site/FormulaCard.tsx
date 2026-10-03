@@ -32,10 +32,9 @@ export function FormulaCard({ name, equation, description, variables, isPremium,
         <p className={`eq min-w-0 flex-1 break-words text-xl font-medium sm:text-2xl ${isPremium ? "text-muted-foreground" : ""}`}>
           {equation}
         </p>
-        <div className="hidden shrink-0 rounded-md bg-secondary/60 p-1 sm:block"><FormulaFigure topic={topic} /></div>
-        <div className="shrink-0 rounded-md bg-secondary/60 p-1 sm:hidden"><FormulaFigure topic={topic} /></div>
+        <div className="shrink-0 rounded-md bg-secondary/60 p-1"><FormulaFigure topic={topic} /></div>
       </div>
-      <p className={`mt-2 text-sm ${isPremium ? "text-muted-foreground" : "text-muted-foreground"}`}>
+      <p className="mt-2 text-sm text-muted-foreground">
         {description}
       </p>
 

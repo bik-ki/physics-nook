@@ -12,7 +12,7 @@ function kindFor(topic: string): FigureKind {
   if (/wave|oscillation|harmonic/.test(name)) return "waves";
   if (/optic|light|lens|reflection|refraction|interference|dispersion/.test(name)) return "optics";
   if (/gas|kinetic theory/.test(name)) return "gas";
-  if (/heat|thermo|temperature/.test(name)) return "heat";
+  if (/heat|thermo|temperature|specific/.test(name)) return "heat";
   if (/circuit|current|capacitor|resistor|induction|alternating/.test(name)) return "circuits";
   if (/magnet/.test(name)) return "magnetism";
   if (/electric|electrostatic|gauss/.test(name)) return "fields";
@@ -33,7 +33,7 @@ export function FormulaFigure({ topic }: { topic: string }) {
   };
   const line = "stroke-current fill-none stroke-[2.5] [stroke-linecap:round] [stroke-linejoin:round]";
   return (
-    <svg viewBox="0 0 120 86" role="img" aria-label={label[kind]} className="h-[86px] w-[120px] shrink-0 text-primary" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 120 86" role="img" aria-label={label[kind]} className="h-[70px] w-[88px] shrink-0 text-primary sm:h-[86px] sm:w-[120px]" xmlns="http://www.w3.org/2000/svg">
       {kind === "motion" && <g className={line}><path d="M10 68h99M17 61l26-33 29 22 32-29M99 21h5v6"/><circle cx="43" cy="28" r="4" className="fill-primary stroke-none"/></g>}
       {kind === "forces" && <g className={line}><path d="M12 69h96M46 47h29v22H46zM60 43V16m-5 6 5-6 5 6M79 57h27m-6-5 6 5-6 5"/></g>}
       {kind === "energy" && <g className={line}><path d="M16 70h88M45 27h31v16H45zM60 46v21m-5-6 5 6 5-6M87 69V28m-4 5 4-5 4 5"/></g>}

@@ -20,6 +20,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   loader: async ({ context }) => {
@@ -165,7 +167,7 @@ function HomePage() {
                 description={formula.description}
                 variables={formula.variables}
                 isPremium={formula.is_premium}
-                  topic={formula.topic}
+                topic={formula.topic}
               />
             ))}
           </div>

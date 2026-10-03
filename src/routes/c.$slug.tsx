@@ -27,6 +27,8 @@ export const Route = createFileRoute("/c/$slug")({
         { name: "description", content: description },
         { property: "og:title", content: title },
         { property: "og:description", content: description },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary" },
       ],
     };
   },
@@ -99,20 +101,20 @@ function CategoryPage() {
         </p>
 
         <div className="mt-4 space-y-8">
-          {Array.from(new Set(results.map((formula) => formula.topic || "General"))).map((topic) => (
+          {Array.from(new Set(results.map((formula) => formula.topic || "General"))).sort((a, b) => a.localeCompare(b)).map((topic) => (
             <section key={topic} aria-label={topic}>
               <h2 className="mb-3 border-b border-border pb-2 font-display text-xl font-semibold">{topic}</h2>
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              {results.filter((formula) => (formula.topic || "General") === topic).map((formula) => (
-            <FormulaCard
-              key={formula.id}
-              name={formula.name}
-              equation={formula.equation}
-              description={formula.description}
-              variables={formula.variables}
-              isPremium={formula.is_premium}
-              topic={formula.topic}
-            />
+                {results.filter((formula) => (formula.topic || "General") === topic).map((formula) => (
+                  <FormulaCard
+                    key={formula.id}
+                    name={formula.name}
+                    equation={formula.equation}
+                    description={formula.description}
+                    variables={formula.variables}
+                    isPremium={formula.is_premium}
+                    topic={formula.topic}
+                  />
               ))}
               </div>
             </section>
